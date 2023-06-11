@@ -1,13 +1,14 @@
 ﻿namespace EmpWage
 {
-    internal class Program
+
+    public class Program
     {
         public const int IS_FULL_TIME = 1;
         public const int IS_PART_TIME = 2;
         public const int EMP_WAGE_PER_HOUR = 20;
         public const int WORKING_DAYS_PER_MONTH = 20;
         public const int TOTAL_WORKING_HOURS = 100;
-        static void Main(string[] args)
+        public static int Computewage()
         {
             int empHrs;
             int empWagePerDay;
@@ -40,6 +41,13 @@
                 Console.WriteLine("Employee Wage per Day: " + empWagePerDay);
             }
             Console.WriteLine("Emp Wage Per Month : " + empWagePerMonth);
+            return empWagePerMonth;
+        }
+
+        
+        static void Main(string[] args)
+        {
+            Computewage();
         }
     }
 }
