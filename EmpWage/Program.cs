@@ -3,49 +3,43 @@
     internal class Program
     {
         public const int IS_FULL_TIME = 1;
-        public const int EMP_RATE_PER_HOUR = 20;
-        public const int IS_PART_TIME = 0;
-        public const int NO_OF_WORKING_DAYS = 2;
+        public const int IS_PART_TIME = 2;
+        public const int EMP_WAGE_PER_HOUR = 20;
+        public const int WORKING_DAYS_PER_MONTH = 20;
+        public const int TOTAL_WORKING_HOURS = 100;
         static void Main(string[] args)
         {
-
-            int empHr;
-            int empWage;
-            int TotalEmpWage=0;
-            for (int i = 0; i < NO_OF_WORKING_DAYS; i++)
+            int empHrs;
+            int empWagePerDay;
+            int empWagePerMonth = 0;
+            int totalWorkingDays = 0;
+            int totalEmpHours = 0;
+            while (totalEmpHours <= TOTAL_WORKING_HOURS && totalWorkingDays < WORKING_DAYS_PER_MONTH)
             {
+                totalWorkingDays++;
                 Random random = new Random();
-                int ispresent = random.Next(3);
-
-                switch (ispresent)
+                double empCheck = random.Next(3);
+                switch ((int)empCheck)
                 {
                     case IS_FULL_TIME:
-                        {
-                            Console.WriteLine("Employee is present");
-                            Console.WriteLine("FullTime");
-                            empHr = 8;
-                            break;
-                        }
-
+                        Console.WriteLine("Full Time:");
+                        empHrs = 8;
+                        break;
                     case IS_PART_TIME:
-                        {
-                            Console.WriteLine("Employee is present");
-                            Console.WriteLine("parttime");
-                            empHr = 4;
-                            break;
-                        }
-
+                        Console.WriteLine("Part Time:");
+                        empHrs = 4;
+                        break;
                     default:
-                        {
-                            Console.WriteLine("Emoployee is not present : ");
-                            empHr = 0;
-                            break;
-                        }
+                        Console.WriteLine("Employee is Absent:");
+                        empHrs = 0;
+                        break;
                 }
-                empWage = EMP_RATE_PER_HOUR * empHr;
-                TotalEmpWage += empWage;
-                Console.WriteLine($"Wage of the employee is :- {empWage}");
+                totalEmpHours += empHrs;
+                empWagePerDay = empHrs * EMP_WAGE_PER_HOUR;
+                empWagePerMonth += empWagePerDay;
+                Console.WriteLine("Employee Wage per Day: " + empWagePerDay);
             }
+            Console.WriteLine("Emp Wage Per Month : " + empWagePerMonth);
         }
     }
 }
